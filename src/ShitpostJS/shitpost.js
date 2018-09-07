@@ -80,12 +80,13 @@ const ShitpostJS = {
    */
   getEmotionOfShitpost: async (text) => {
     try {
-      return await(await fetch("https://textemotions.azurewebsites.net/text/", {
+      const json = await(await fetch("https://textemotions.azurewebsites.net/text/", {
         method: 'POST',
         body: JSON.stringify({
           text: text
         })
-      })).json().documents[0].score
+      })).json()
+      return json.documents[0].score
     } catch (e) { return `${e}` }
   }
 }
