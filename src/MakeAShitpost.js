@@ -24,13 +24,11 @@ export default class MemeMaker extends Component {
   render() {
     return (
       <div className="ShitpostContainer">
-        <div className="ShitpostCentre">
+        <div className="ShitpostCentre" style={{ textAlign: 'center' }}>
           <h1>Generate some fucking shitposts</h1>
-          <div>
-            <textarea style={{ width: 500, height: 200, fontSize: 16 }} placeholder="YOUR TEXT HERE" type="text" onChange={(e) => this.textChange(e.target.value)} value={this.state.text} />
-          </div>
-          <button onClick={this.submit}>Submit</button>
-          {(this.state.url) ? <Link to={this.state.url}>Here's your link!</Link> : <div></div>}
+          <textarea style={{ boxSizing: 'border-box', width: '100%', height: 200, fontSize: 16 }} placeholder="YOUR TEXT HERE" type="text" onChange={(e) => this.textChange(e.target.value)} value={this.state.text} />
+          <button style={{ height: 40, width: '100%', fontSize: '1.4em' }} onClick={this.submit}>Submit</button>
+          {(this.state.url) ? <div style={{ padding: 10 }}><Link style={{ width: '100%', fontSize: '1.4em'}} to={this.state.url}>Here's your link!</Link></div> : <div></div>}
         </div>
       </div>
     )

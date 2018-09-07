@@ -39,7 +39,7 @@ const ShitpostJS = {
     const data = {
       language: 'plaintext',
       title: 'Loud Shitpost',
-      public: true,
+      public: false,
       files: [{
         name: "main.txt",
         content: `${text}`
