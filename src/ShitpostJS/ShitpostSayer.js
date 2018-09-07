@@ -8,11 +8,17 @@ export default class ShitpostSayer extends Component {
       synth: (window.speechSynthesis) ? window.speechSynthesis : null
     }
   }
+  componentDidMount() {
+    window.addEventListener("beforeunload", () => window.speechSynthesis.cancel())
+  }
   componentDidUpdate() {
     const synth = this.state.synth
     if (!synth) return
     synth.cancel()
-    synth.speak(new SpeechSynthesisUtterance(this.props.shitpost))
+    const shitpost = (this.props.shitpost) ? this.props.shitpost : ''
+    const utterance = new SpeechSynthesisUtterance(shitpost)
+    utterance.rate = Math.min(2, Math.max(1, shitpost.length/800))
+    synth.speak(utterance)
   }
   render() {
     return null

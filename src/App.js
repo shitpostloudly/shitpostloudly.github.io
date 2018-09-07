@@ -4,21 +4,39 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { ShitpostCentral, ShitpostSpeech } from './ShitpostJS'
 import FunnyOnes from './FunnyOnes'
 import MakeAShitpost from './MakeAShitpost'
+import { createColorRange, GColor} from './colors'
 
 import './App.css';
+
+const whiteGreen = createColorRange(new GColor(255, 255, 255), new GColor(249, 255, 96))
+const redWhite = createColorRange(new GColor(214, 49, 49), new GColor(255, 255, 255))
 
 const DisplayShitpost = ({shitpost=''}) => {
   return (
   <div className="ShitpostContainer">
     <div className="ShitpostCentre">
-      <h1 id="content">{shitpost}</h1>
+    {
+      (shitpost) ?
+      <div style={{ borderRadius: 15, padding: '25px 40px', backgroundColor: '#eee' }}>
+        <pre style={{ fontSize: '2em', margin: 0, whiteSpace: 'pre-wrap', wordWrap: 'break-word' }} id="content">{shitpost}</pre>
+      </div>
+      :
+      ''
+    }
     </div>
   </div>
   )
 }
 
-const Credits = () => {
-  return <div className="ShitpostCredits">Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank" rel="noopener noreferrer">CC 3.0 BY</a>. That's right, I actually credit other people's work. This work is protected by CC BY-SA 4.0 or whatever by NewBee.</div>
+/**
+ * 
+ * @param { id } ID a matching identifier
+ */
+const ShitpostGold = ({ id }) => {
+  if (FunnyOnes[id]) return (
+    <span className="corner-banner"><a>Shitpost Gold&trade; certified</a></span>
+  )
+  else return null
 }
 
 class App extends Component {
@@ -34,15 +52,25 @@ class App extends Component {
 
   componentDidMount() {
     if (!this.state.id) ShitpostCentral.getRandomRedditShitpost().then(x => this.setState({ shitpost: x }))
-    else ShitpostCentral.getPastebinShitpost(this.state.id).then(x => this.setState({ shitpost: x }))
+    else ShitpostCentral.getGlotIoShitpost(this.state.id).then(x => this.setState({ shitpost: x }))
+  }
+
+  changeColourAccordingly = async (shitpost) => {
+    let sentiment = await ShitpostCentral.getEmotionOfShitpost(shitpost)
+    let color = {r: 0, g: 0, b: 0}
+    if (sentiment >= 0.5) color = whiteGreen[Math.round(2*(sentiment - 0.5)*(whiteGreen.length-1))]
+    else if (sentiment < 0.5) color = redWhite[Math.round(2*sentiment*(redWhite.length-1))]
+    document.body.style.backgroundColor = `rgb(${color.r}, ${color.g}, ${color.b})`
   }
 
   render() {
+    const shitpost = this.state.shitpost
+    if (shitpost) this.changeColourAccordingly(shitpost)
     return (
       <div>
-        <DisplayShitpost shitpost={this.state.shitpost} />
-        <ShitpostSpeech shitpost={this.state.shitpost} />
-        <Credits />
+        <ShitpostGold id={this.props.match.params.id} />
+        <DisplayShitpost shitpost={shitpost} />
+        <ShitpostSpeech shitpost={shitpost} />
       </div>
     )
   }

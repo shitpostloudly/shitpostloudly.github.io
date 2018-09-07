@@ -1,7 +1,11 @@
 /**
  * Shitpost.JS shitpost framework (omegaLUL)
+ * Fuck Pastebin lmao
  */
 const ShitpostJS = {
+  /**
+   * Deprecated because fuck pastebin
+   */
   submitToPastebin: async (devKey, text) => {
     if (!devKey || !text) return
     let formData = new FormData();
@@ -20,6 +24,9 @@ const ShitpostJS = {
     } while (resp.status !== 200 && (maxTries--) > 0)
     return url
   },
+  /**
+   * Deprecated because fuck pastebin
+   */
   getPastebinShitpost: async (id) => {
     if (!id) return unescape(classicShitpost)
     const resp = await fetch(`https://cors.io/?https://pastebin.com/raw/${id}`)
@@ -27,10 +34,59 @@ const ShitpostJS = {
     if (resp.status !== 200) return unescape(classicShitpost)
     return text
   },
+  submitToGlotIo: async (text) => {
+    if (!text) return
+    const data = {
+      language: 'plaintext',
+      title: 'Loud Shitpost',
+      public: true,
+      files: [{
+        name: "main.txt",
+        content: `${text}`
+      }]
+    }
+    const resp = await fetch("https://snippets.glot.io/snippets", {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      method: 'POST',
+      body: JSON.stringify(data)
+    })
+    if (resp.status !== 200) throw new Error("Glot.io's API might have changed. Please notify me :)")
+    return (await resp.json()).id
+  },
+  getGlotIoShitpost: async (id) => {
+    const error = async (status) => {
+      return `${status} Your code failed.\n\n ${await ShitpostJS.getRandomRedditShitpost()}`
+    }
+    try {
+      var resp = await fetch(`https://snippets.glot.io/snippets/${id}`)
+      var json = await resp.json()
+    } catch (e) { return await error(404) }
+    if (!json || !json.files) return await error(404)
+    return json.files.map(multiPartFile => multiPartFile.content).join('\n')
+  },
   getRandomRedditShitpost: async (id) => {
     const resp = await (await fetch("https://www.reddit.com/r/copypasta/.json")).json()
     const children = resp.data.children
-    return children[Math.floor(Math.random() * children.length)]["data"]["selftext"]
+    do {
+      var text = children[Math.floor(Math.random() * children.length)]["data"]["selftext"]
+    } while (!text || text.replace(/\s/g,'').length === 0)
+    return text
+  },
+  /**
+   * Some novel ass technique that I fucking bullshitted in 4 hours (lmao undergrad projects)
+   */
+  getEmotionOfShitpost: async (text) => {
+    try {
+      return await(await fetch("https://textemotions.azurewebsites.net/text/", {
+        method: 'POST',
+        body: JSON.stringify({
+          text: text
+        })
+      })).json().documents[0].score
+    } catch (e) { return `${e}` }
   }
 }
 
