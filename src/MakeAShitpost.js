@@ -35,7 +35,7 @@ export default class MemeMaker extends Component {
 
   render() {
     const bgColor = this.state.backgroundColor;
-    const restrict = restrictBetween(0, 160)
+    const restrict = restrictBetween(0, 125)
     document.body.style.backgroundColor = `rgb(${bgColor.r}, ${bgColor.g}, ${bgColor.b})`
     const color = `rgb(${restrict(bgColor.r*0.5)}, ${restrict(bgColor.g*0.5)}, ${restrict(bgColor.g*0.5)})`
     return (

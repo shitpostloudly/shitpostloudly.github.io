@@ -75,7 +75,7 @@ class App extends Component {
   render() {
     const shitpost = this.state.shitpost
     const bgColor = this.state.backgroundColor
-    const restrict = restrictBetween(0, 160)
+    const restrict = restrictBetween(0, 125)
     document.body.style.backgroundColor = `rgb(${bgColor.r}, ${bgColor.g}, ${bgColor.b})`
 
     const color = `rgb(${restrict(bgColor.r*0.7)}, ${restrict(bgColor.g*0.7)}, ${restrict(bgColor.g*0.7)})`
