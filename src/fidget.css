@@ -1,5 +1,5 @@
 .fidget {
-  animation: spin 1s 0s linear both infinite;
+  animation: spin 350ms 0s linear both infinite;
 }
 
 @keyframes spin {
