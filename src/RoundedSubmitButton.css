@@ -1,0 +1,15 @@
+button.RoundedSubmitButton {
+  height: 40px;
+  width: 100%;
+  font-size: 1.4em;
+  border-radius: 20px;
+  line-height: 0;
+  font-weight: 800;
+  outline: 0;
+  border-width: 1px;
+  border-style: outset;
+}
+button.RoundedSubmitButton:active {
+  border-width: 3px;
+  border-style: inset;
+}
