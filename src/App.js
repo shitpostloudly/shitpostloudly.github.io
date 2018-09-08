@@ -56,7 +56,7 @@ class App extends Component {
     super(props)
     const preId = props.match.params.id
     const id = (FunnyOnes.hasOwnProperty(preId)) ? FunnyOnes[preId] : preId
-    const color = new GColor(255, 255, 255)
+    const color = new GColor(0, 0, 0)
     this.state = {
       id: id,
       shitpost: '',
