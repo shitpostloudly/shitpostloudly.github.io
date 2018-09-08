@@ -1,0 +1,1 @@
+export const rand255 = () => Math.floor(Math.random() * 256);

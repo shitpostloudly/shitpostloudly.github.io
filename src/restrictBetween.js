@@ -1,0 +1,1 @@
+export const restrictBetween = (a, b) => (number) => Math.min(b, Math.max(a, number));

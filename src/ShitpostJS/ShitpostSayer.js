@@ -17,7 +17,7 @@ export default class ShitpostSayer extends Component {
     synth.cancel()
     const shitpost = (this.props.shitpost) ? this.props.shitpost : ''
     const utterance = new SpeechSynthesisUtterance(shitpost)
-    utterance.rate = Math.min(1.5, Math.max(1, shitpost.split(' ').length/800))
+    utterance.rate = Math.min(1.5, Math.max(1, shitpost.split(' ').length/200))
     synth.speak(utterance)
   }
   render() {

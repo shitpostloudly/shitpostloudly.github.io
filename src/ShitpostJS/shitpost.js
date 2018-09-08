@@ -80,15 +80,16 @@ const ShitpostJS = {
    * Disabled for now because I forgot to fucking cache the results.
    */
   getEmotionOfShitpost: async (text) => {
-    try {
-      const json = await(await fetch("", {
-        method: 'POST',
-        body: JSON.stringify({
-          text: text
-        })
-      })).json()
-      return json.documents[0].score
-    } catch (e) { return `${e}` }
+    return
+    // try {
+    //   const json = await(await fetch("", {
+    //     method: 'POST',
+    //     body: JSON.stringify({
+    //       text: text
+    //     })
+    //   })).json()
+    //   return json.documents[0].score
+    // } catch (e) { return `${e}` }
   }
 }
 

@@ -1,0 +1,13 @@
+.fidget {
+  animation: spin 1s 0s linear both infinite;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
