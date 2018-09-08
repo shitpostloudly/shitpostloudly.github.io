@@ -10,6 +10,7 @@ import './App.css';
 
 const whiteGreen = createColorRange(new GColor(255, 255, 255), new GColor(249, 255, 96))
 const redWhite = createColorRange(new GColor(214, 49, 49), new GColor(255, 255, 255))
+const rand255 = () => Math.floor(Math.random()*256)
 
 const DisplayShitpost = ({shitpost=''}) => {
   return (
@@ -57,7 +58,7 @@ class App extends Component {
 
   changeColourAccordingly = async (shitpost) => {
     let sentiment = await ShitpostCentral.getEmotionOfShitpost(shitpost)
-    let color = {r: 0, g: 0, b: 0}
+    let color = new GColor(rand255(), rand255(), rand255())
     if (sentiment >= 0.5) color = whiteGreen[Math.round(2*(sentiment - 0.5)*(whiteGreen.length-1))]
     else if (sentiment < 0.5) color = redWhite[Math.round(2*sentiment*(redWhite.length-1))]
     document.body.style.backgroundColor = `rgb(${color.r}, ${color.g}, ${color.b})`

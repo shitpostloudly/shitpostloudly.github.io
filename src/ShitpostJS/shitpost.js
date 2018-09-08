@@ -73,14 +73,15 @@ const ShitpostJS = {
     do {
       var text = children[Math.floor(Math.random() * children.length)]["data"]["selftext"]
     } while (!text || text.replace(/\s/g,'').length === 0)
-    return text
+    return text.trim()
   },
   /**
    * Some novel ass technique that I fucking bullshitted in 4 hours (lmao undergrad projects)
+   * Disabled for now because I forgot to fucking cache the results.
    */
   getEmotionOfShitpost: async (text) => {
     try {
-      const json = await(await fetch("https://textemotions.azurewebsites.net/text/", {
+      const json = await(await fetch("", {
         method: 'POST',
         body: JSON.stringify({
           text: text
