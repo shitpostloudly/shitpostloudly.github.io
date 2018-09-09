@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { ShitpostCentral } from './ShitpostJS'
 import { Link } from 'react-router-dom'
-import { rand255 } from "./rand255";
-import { restrictBetween } from './restrictBetween'
-import { GColor } from './colors'
+import { rand255 } from "./utils/rand255";
+import { restrictBetween } from './utils/restrictBetween'
+import { GColor } from './utils/colors'
 import { ShitpostSpeech } from './ShitpostJS'
 
 import './App.css';
