@@ -6,5 +6,6 @@ const funnies = {
   'software-response': 'f4kdx6sp8b',
   'reddit1': 'f4ke6f08ou',
   'terran': 'f4kmkyen9a',
+  'unfortunately': 'f4o11lb97a'
 }
 export default funnies
