@@ -1,38 +1,25 @@
-import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 import GoogleAnalytics from 'react-ga';
 
 GoogleAnalytics.initialize('UA-125467783-1');
 
-const withTracker = (WrappedComponent, options = {}) => {
-  const trackPage = page => {
-    GoogleAnalytics.set({
-      page,
-      ...options,
-    });
-    GoogleAnalytics.pageview(page);
+export default class GAListener extends React.Component {
+  static contextTypes = {
+    router: PropTypes.object
   };
 
-  const HOC = class extends Component {
-    componentDidMount() {
-      const page = this.props.location.pathname;
-      trackPage(page);
-    }
+  componentDidMount() {
+    this.sendPageView(this.context.router.history.location);
+    this.context.router.history.listen(this.sendPageView);
+  }
 
-    componentWillReceiveProps(nextProps) {
-      const currentPage = this.props.location.pathname;
-      const nextPage = nextProps.location.pathname;
+  sendPageView(location) {
+    GoogleAnalytics.set({ page: location.pathname+location.search });
+    GoogleAnalytics.pageview(location.pathname+location.search);
+  }
 
-      if (currentPage !== nextPage) {
-        trackPage(nextPage);
-      }
-    }
-
-    render() {
-      return <WrappedComponent {...this.props} />;
-    }
-  };
-
-  return HOC;
-};
-
-export default withTracker;
+  render() {
+    return this.props.children;
+  }
+}

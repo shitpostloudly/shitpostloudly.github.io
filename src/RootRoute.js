@@ -9,11 +9,13 @@ import GATracker from './components/GATracker'
 const DefaultRouter = () => {
   return (
     <Router>
-      <Switch>
-        <Route path="/make-a-shitpost" component={GATracker(MakeAShitpost)} />
-        <Route path="/:id" component={GATracker(App)} />
-        <Route exact path="/" component={GATracker(App)} />
-      </Switch>
+      <GATracker>
+        <Switch>
+          <Route path="/make-a-shitpost" component={MakeAShitpost} />
+          <Route path="/:id" component={App} />
+          <Route exact path="/" component={App} />
+        </Switch>
+      </GATracker>
     </Router>
   )
 }
