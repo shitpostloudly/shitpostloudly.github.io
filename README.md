@@ -1,6 +1,6 @@
 <h1 class="unchanged" align="center">Shitpost Loudly</h1>
 <div align="center">
-<a href="https://github.com/mohan-cao/revilo"><img height="200" style="display:inline-block;" src="./public/favicon.png" alt="Shitpost Loudly Logo"></a>
+<a href="https://github.com/shitpostloudly/shitpostloudly.github.io"><img height="200" style="display:inline-block;" src="./public/favicon.png" alt="Shitpost Loudly Logo"></a>
 <br>
 <a href="https://github.com/shitpostloudly/shitpostloudly.github.io/issues"><img style="display:inline-block;" src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="Contributions welcome"></a>
 <img style="display:inline-block;" src="http://hits.dwyl.io/shitpostloudly/shitpostloudly.github.io.svg" alt="Hit counter">
