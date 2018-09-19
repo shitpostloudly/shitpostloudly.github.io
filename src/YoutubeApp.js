@@ -16,7 +16,7 @@ export default class App extends Component {
     super(props);
     const params = props.match.params
     const isFunnies = (FunnyOnes.hasOwnProperty(props.match.url))
-    const id = (isFunnies) ? FunnyOnes[props.match.url].split('/').slice(-2) : [params.subredditId, params.postId];
+    const id = (isFunnies) ? FunnyOnes[props.match.url] : params.id;
     const color = new GColor(0, 0, 0);
     this.state = {
       id: id,
