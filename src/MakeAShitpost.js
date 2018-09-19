@@ -69,7 +69,9 @@ export default class MemeMaker extends Component {
   }
 
   validateAndSubmit = () => {
-    if (!this.state.text || !this.state.text.trim()) return
+    const text = this.state.text
+    // need to add support for reddit and youtube URLs in future
+    if (!text || !text.trim()) return
     recaptchaRef.current.execute()
   }
 
