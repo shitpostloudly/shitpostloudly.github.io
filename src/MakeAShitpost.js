@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { rand255 } from "./utils/rand255";
 import { GColor, idealColorFunction, changeLuminosity } from './utils/colors'
 import { ShitpostSpeech } from './ShitpostJS'
+import ReCAPTCHA from 'react-google-recaptcha'
 
 import './App.css';
 import './RoundedSubmitButton.css'
@@ -24,14 +25,19 @@ const textAreaStyle = {
   outline: 0
 }
 
-const RoundedSubmitButton = ({ color='black', invertedColor='white', onClick=()=>{} }) => {
+const RoundedSubmitButton = ({ disabled, color='black', invertedColor='white', onClick=()=>{} }) => {
   return (
     <button
+    disabled={disabled}
     className="RoundedSubmitButton"
     style={{ marginTop: 5, color: invertedColor, backgroundColor: color, borderColor: color }}
     onClick={onClick}>Submit</button>
   )
 }
+
+const reCAPTCHAKey = '6LeFDHEUAAAAAAlVeMaEwP1epvbYaqx5aSk6EWUv'
+
+const recaptchaRef = React.createRef();
 
 export default class MemeMaker extends Component {
   constructor() {
@@ -56,11 +62,15 @@ export default class MemeMaker extends Component {
   }
   
   submit = () => {
-    if (!this.state.text || !this.state.text.trim()) return
     ShitpostCentral.submitToGlotIo(this.state.text).then(x => {
       if (!x) return
       this.setState({ url: '/' + x, disableTextArea: true })
     })
+  }
+
+  validateAndSubmit = () => {
+    if (!this.state.text || !this.state.text.trim()) return
+    recaptchaRef.current.execute()
   }
 
   render() {
@@ -80,7 +90,13 @@ export default class MemeMaker extends Component {
             <div style={{ textAlign: 'left' }}><Link style={linkStyle} to="/">&lt; Back to Shitposts</Link></div>
             <h1 style={{ color: bgColor.toCSSColor() }}>Generate some fucking shitposts</h1>
             <textarea disabled={this.state.disableTextArea} style={textAreaStyle} placeholder="YOUR SHITPOST HERE" onChange={(e) => this.textChange(e.target.value)} />
-            <RoundedSubmitButton color={bgColor.toCSSColor()} invertedColor={invertedColor.toCSSColor()} onClick={this.submit} />
+            <ReCAPTCHA
+              ref={recaptchaRef}
+              size="invisible"
+              sitekey={reCAPTCHAKey}
+              onChange={this.submit}
+            />
+            <RoundedSubmitButton disabled={this.state.disableTextArea} color={bgColor.toCSSColor()} invertedColor={invertedColor.toCSSColor()} onClick={this.validateAndSubmit} />
             {(this.state.url) ? <div style={{ padding: 10 }}><Link style={linkStyle} to={this.state.url}>Here's your link!</Link></div> : <div></div>}
           </div>
         </div>
