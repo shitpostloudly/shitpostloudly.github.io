@@ -1,7 +1,14 @@
 {
-  "main.css": "static/css/main.318ecade.css",
-  "main.css.map": "static/css/main.318ecade.css.map",
-  "main.js": "static/js/main.6cf4b349.js",
-  "main.js.map": "static/js/main.6cf4b349.js.map",
-  "static\\media\\fidget.svg": "static/media/fidget.55c3516c.svg"
+  "main.css": "/static/css/main.e68fbe64.chunk.css",
+  "main.js": "/static/js/main.76c1309a.chunk.js",
+  "main.js.map": "/static/js/main.76c1309a.chunk.js.map",
+  "static/js/1.6f62e025.chunk.js": "/static/js/1.6f62e025.chunk.js",
+  "static/js/1.6f62e025.chunk.js.map": "/static/js/1.6f62e025.chunk.js.map",
+  "runtime~main.js": "/static/js/runtime~main.229c360f.js",
+  "runtime~main.js.map": "/static/js/runtime~main.229c360f.js.map",
+  "static/media/fidget.svg": "/static/media/fidget.55c3516c.svg",
+  "static/css/main.e68fbe64.chunk.css.map": "/static/css/main.e68fbe64.chunk.css.map",
+  "index.html": "/index.html",
+  "precache-manifest.7bd6a6924d00291c7135b501250f950a.js": "/precache-manifest.7bd6a6924d00291c7135b501250f950a.js",
+  "service-worker.js": "/service-worker.js"
 }
