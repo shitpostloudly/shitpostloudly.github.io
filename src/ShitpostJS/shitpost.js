@@ -60,14 +60,14 @@ const ShitpostJS = {
   },
   getGlotIoShitpost: async (id) => {
     const error = async (status) => {
-      return `${status} Your code failed.\n\n ${await ShitpostJS.getRandomRedditShitpost()}`
+      return `${status} Your code failed. \n\n${await ShitpostJS.getRandomRedditShitpost()}`
     }
     try {
       var resp = await fetch(`https://snippets.glot.io/snippets/${id}`)
       var json = await resp.json()
     } catch (e) { return await error(404) }
     if (!json || !json.files) return await error(404)
-    return json.files.map(multiPartFile => multiPartFile.content).join('\n')
+    return json.files.map(multiPartFile => multiPartFile.content).join('\n').replace(/\./g,'. ').replace(/\s+/g, ' ').trim()
   },
   getRandomRedditShitpost: async (id) => {
     const resp = await (await fetch("https://www.reddit.com/r/copypasta/.json")).json()
@@ -75,11 +75,11 @@ const ShitpostJS = {
     do {
       var text = children[Math.floor(Math.random() * children.length)]["data"]["selftext"]
     } while (!text || text.replace(/\s/g,'').length === 0)
-    return text.trim()
+    return text.replace(/\./g,'. ').replace(/\s+/g, ' ').trim()
   },
   getVerySpecificRedditShitpost: async (subredditId='', postId='') => {
     const error = async (status) => {
-      return `${status} Couldn't get Reddit post.\n\n ${await ShitpostJS.getRandomRedditShitpost()}`
+      return `${status} Couldn't get Reddit post. \n\n${await ShitpostJS.getRandomRedditShitpost()}`
     }
     if (!(subredditId && postId)) return await error(404)
     const resp = await fetch(`https://www.reddit.com/r/${subredditId}/${postId}/.json`)
@@ -87,11 +87,11 @@ const ShitpostJS = {
     if (resp.status !== 200) return await error(resp.status)
     const children = json[0].data.children
     const text = children[0]["data"]["selftext"]
-    return text.trim()
+    return text.replace(/\./g,'. ').replace(/\s+/g, ' ').trim()
   },
   getYoutubeTranscriptShitpost: async (videoId, lang='en') => {
     const error = async () => {
-      return `Sorry, couldn't get your Youtube shitpost. No transcript found probably.\n\n ${await ShitpostJS.getRandomRedditShitpost()}`
+      return `Sorry, couldn't get your Youtube shitpost. No transcript found probably. \n\n${await ShitpostJS.getRandomRedditShitpost()}`
     }
     const resp = await (await fetch(`https://video.google.com/timedtext?lang=${lang}&v=${videoId}`)).text()
     const json = xmlToJson((new DOMParser()).parseFromString(resp, 'text/xml')) // hahaha the inefficiency but does it look like I care?

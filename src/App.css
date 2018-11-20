@@ -30,7 +30,8 @@ div.ShitpostCredits {
   font-size: 8pt;
 }
 
-.corner-banner a {
+.corner-banner span {
+  cursor: default;
   background: #AD7C00 linear-gradient(
     to left, 
     rgba(255, 212, 102, 0.11) 0%,
@@ -50,7 +51,7 @@ div.ShitpostCredits {
   transition: 0.5s;
 }
 
-.corner-banner a:hover {
+.corner-banner span:hover {
   background: #EDAC00 linear-gradient(
     to left, 
     rgba(255, 212, 102, 0.11) 0%,
@@ -61,8 +62,8 @@ div.ShitpostCredits {
   color: gold;
 }
 
-.corner-banner a::before,
-.corner-banner a::after {
+.corner-banner span::before,
+.corner-banner span::after {
   content: "";
   width: 100%;
   display: block;
@@ -73,7 +74,7 @@ div.ShitpostCredits {
   background: #FFDD00;
 }
 
-.corner-banner a::after {
+.corner-banner span::after {
   bottom: 1px;
   top: auto;
 }
@@ -90,7 +91,7 @@ div.ShitpostCredits {
     overflow: hidden;
     z-index: 9999;
   }
-  .corner-banner a {
+  .corner-banner span {
     height: 30px;
     margin: 0;
     padding-top: 0;
@@ -110,7 +111,7 @@ div.ShitpostCredits {
     height: 200px;
     z-index: 9999;
   }
-  .corner-banner a {
+  .corner-banner span {
     width: 200px;
     position: absolute;
     top: 60px;

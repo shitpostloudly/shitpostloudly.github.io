@@ -5,7 +5,7 @@ import React from 'react';
  */
 export const ShitpostGold = ({ id, show=false }) => {
   if (show)
-    return (<span className="corner-banner"><a>Shitpost Gold&trade; certified</a></span>);
+    return (<span className="corner-banner"><span>Shitpost Gold&trade; certified</span></span>);
   else
     return null;
 };
