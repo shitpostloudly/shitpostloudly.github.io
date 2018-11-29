@@ -1,22 +1,17 @@
 import { Component } from 'react'
 import PropType from 'prop-types'
 import MeSpeak from 'mespeak'
+import franc from 'franc-min'
+import { guessLanguage } from 'guesslanguage'
+import langs from 'langs'
+import emojiRegex from 'emoji-regex'
 
 /**
  * Fuck y'all mojis, they take too long to speak
  * @param {string} input
  */
 const emojiStripper = (input) => {
-  var result = '';
-  if (input.length === 0)
-      return input;
-  for (var indexOfInput = 0, lengthOfInput = input.length; indexOfInput < lengthOfInput; indexOfInput++) {
-      var charAtSpecificIndex = input[indexOfInput].charCodeAt(0);
-      if ((32 <= charAtSpecificIndex) && (charAtSpecificIndex <= 126)) {
-          result += input[indexOfInput];
-      }
-  }
-  return result;
+  return input.replace(emojiRegex(), '')
 };
 
 export default class ShitpostSayer extends Component {
@@ -70,7 +65,16 @@ export default class ShitpostSayer extends Component {
     const shitpost = (this.props.shitpost) ? emojiStripper(this.props.shitpost) : ''
     const utterance = new Utterance(shitpost)
     utterance.rate = Math.min(1.5, Math.max(1, shitpost.split(' ').length/200))
-    Synth.speak(utterance)
+    const francDetection = langs.where("3", franc(shitpost))
+    if (francDetection) {
+      utterance.lang = francDetection
+      Synth.speak(utterance)
+    } else {
+      guessLanguage.detect(shitpost, (code) => {
+        utterance.lang = code
+        Synth.speak(utterance)
+      })
+    }
   }
   render() {
     return null
