@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ShitpostCentral, ShitpostSpeech } from './ShitpostJS';
+import { ShitpostCentral } from './ShitpostJS';
 import FunnyOnes from './ShitpostJS/FunnyOnes';
 import { GColor, idealColorFunction, changeLuminosity } from './utils/colors';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -48,7 +48,6 @@ export class App extends Component {
       <div className="social-btns" style={{ position: 'fixed', bottom: 0, right: 0 }}>
         <a className="btn github" href="https://github.com/shitpostloudly/shitpostloudly.github.io"><FontAwesomeIcon className="fa" icon={faGithubAlt} /></a>
       </div>
-      <ShitpostSpeech shitpost={shitpost} />
     </div>);
   }
 }

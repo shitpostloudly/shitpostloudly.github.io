@@ -11,8 +11,10 @@ body div.ShitpostContainer {
   font-family: Verdana, Arial, sans-serif;
   text-align: justify;
   display: flex;
-  justify-content: center;
-  align-items: center;
+}
+
+div.ShitpostContainer div {
+  margin: auto;
 }
 
 div.ShitpostCentre {
