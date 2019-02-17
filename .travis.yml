@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+  - 'lts/*'
+cache: yarn
+jobs:
+  include:
+    - stage: Deploy to GitHub Pages
+      script: yarn build
+      deploy:
+        provider: pages
+        local-dir: build
+        skip-cleanup: true
+        github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+        keep-history: true
+        committer-from-gh: true
+        target-branch: master
+        on:
+          branch: develop
