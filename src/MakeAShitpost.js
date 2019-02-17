@@ -3,6 +3,7 @@ import { ShitpostCentral } from './ShitpostJS'
 import { Link } from 'react-router-dom'
 import { rand255 } from "./utils/rand255";
 import { GColor, idealColorFunction, changeLuminosity } from './utils/colors'
+import { ShitpostSpeech } from './ShitpostJS'
 import ReCAPTCHA from 'react-google-recaptcha'
 
 import './App.css';
@@ -101,6 +102,7 @@ export default class MemeMaker extends Component {
             {(this.state.url) ? <div style={{ padding: 10 }}><Link style={linkStyle} to={this.state.url}>Here's your link!</Link></div> : <div></div>}
           </div>
         </div>
+        <ShitpostSpeech />
       </div>
     )
   }

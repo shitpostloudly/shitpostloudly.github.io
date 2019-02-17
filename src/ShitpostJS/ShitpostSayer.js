@@ -57,34 +57,30 @@ export default class ShitpostSayer extends Component {
       })
     }
   }
+  componentDidUpdate() {
+    this.sayShitpost()
+  }
   sayShitpost = () => {
-    const { Synth, Utterance, playing } = this.state
-    if (!(Synth && Utterance) || playing || !this.props.shitpost) return
-    const weirdRand = Math.random() + 1
-    this.setState({ playing: weirdRand }, () => {
-      if (this.state.playing !== weirdRand) {
-        console.log('Couldn\'t acquire lock', weirdRand)
-        return
-      }
-      const shitpost = (this.props.shitpost) ? emojiStripper(this.props.shitpost) : ''
-      const utterance = new Utterance(shitpost)
-      window.utterance = utterance
-      utterance.rate = Math.min(1.5, Math.max(1, shitpost.split(' ').length/200))
-      utterance.onend = () => void this.setState({ playing: false })
-      const francDetection = langs.where("3", franc(shitpost))
-      if (francDetection) {
-        utterance.lang = francDetection
+    const Synth = this.state.Synth
+    const Utterance = this.state.Utterance
+    if (!(Synth && Utterance) || !this.props.shitpost) return
+    Synth.cancel()
+    const shitpost = (this.props.shitpost) ? emojiStripper(this.props.shitpost) : ''
+    const utterance = new Utterance(shitpost)
+    utterance.rate = Math.min(1.5, Math.max(1, shitpost.split(' ').length/200))
+    const francDetection = langs.where("3", franc(shitpost))
+    if (francDetection) {
+      utterance.lang = francDetection
+      Synth.speak(utterance)
+    } else {
+      guessLanguage.detect(shitpost, (code) => {
+        utterance.lang = code
         Synth.speak(utterance)
-      } else {
-        guessLanguage.detect(shitpost, (code) => {
-          utterance.lang = code
-          Synth.speak(utterance)
-        })
-      }
-    })
+      })
+    }
   }
   render() {
-    return <div style={{ cursor: 'pointer' }} onClick={this.sayShitpost}>{this.props.children}</div>
+    return <div style={{ display: 'none', position: 'fixed', top: -200, left: -200 }}><button ref={(ref) => this.niceLittleHack=ref} onClick={this.sayShitpost} /></div>
   }
 }
 ShitpostSayer.defaultProps = {
