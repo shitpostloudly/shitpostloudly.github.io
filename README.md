@@ -2,6 +2,7 @@
 <div align="center">
 <a href="https://github.com/shitpostloudly/shitpostloudly.github.io"><img height="200" style="display:inline-block;" src="./public/favicon.png" alt="Shitpost Loudly Logo"></a>
 <br>
+<a href="https://travis-ci.org/shitpostloudly/shitpostloudly.github.io"><img style="display:inline-block;" src="https://travis-ci.org/shitpostloudly/shitpostloudly.github.io.svg?branch=develop" alt="Build Status"></a>
 <a href="https://github.com/shitpostloudly/shitpostloudly.github.io/issues"><img style="display:inline-block;" src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="Contributions welcome"></a>
 <img style="display:inline-block;" src="http://hits.dwyl.io/shitpostloudly/shitpostloudly.github.io.svg" alt="Hit counter">
 </div>
