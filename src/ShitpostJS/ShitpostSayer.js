@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 import PropType from 'prop-types'
 import MeSpeak from 'mespeak'
 import franc from 'franc-min'
@@ -58,12 +58,9 @@ export default class ShitpostSayer extends Component {
     }
   }
   componentDidUpdate() {
-    this.sayShitpost()
-  }
-  sayShitpost = () => {
     const Synth = this.state.Synth
     const Utterance = this.state.Utterance
-    if (!(Synth && Utterance) || !this.props.shitpost) return
+    if (!(Synth && Utterance)) return
     Synth.cancel()
     const shitpost = (this.props.shitpost) ? emojiStripper(this.props.shitpost) : ''
     const utterance = new Utterance(shitpost)
@@ -80,7 +77,7 @@ export default class ShitpostSayer extends Component {
     }
   }
   render() {
-    return <div style={{ display: 'none', position: 'fixed', top: -200, left: -200 }}><button ref={(ref) => this.niceLittleHack=ref} onClick={this.sayShitpost} /></div>
+    return null
   }
 }
 ShitpostSayer.defaultProps = {
