@@ -106,13 +106,13 @@ export default class ShitpostSayer extends Component {
     utterance.rate = rate
     const francDetection = langs.where("3", franc(shitpost))
     if (francDetection) {
-      utterance.lang = francDetection["1"]
+      utterance.lang = Synth.getVoices().filter(x => x.lang.indexOf(francDetection["1"]) !== -1).map(x => x.lang)[0]
       speechUtteranceChunker(utterance, {}, (success) => {
         if (!success) Synth.speak(utterance)
       })
     } else {
       guessLanguage.detect(shitpost, (code) => {
-        utterance.lang = code
+        utterance.lang = Synth.getVoices().filter(x => x.lang.indexOf(code) !== -1).map(x => x.lang)[0]
         speechUtteranceChunker(utterance, {}, (success) => {
           if (!success) Synth.speak(utterance)
         })
