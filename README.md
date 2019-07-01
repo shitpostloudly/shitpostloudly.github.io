@@ -14,6 +14,8 @@ https://shitpostloudly.github.io
 
 ## URLs
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/shitpostloudly/shitpostloudly.github.io.svg)](https://greenkeeper.io/)
+
 https://shitpostloudly.github.io/ - gets a random Reddit /r/copypasta shitpost. Probably NSFW. Sorry.
 
 https://shitpostloudly.github.io/make-a-shitpost/ - pretty obvious
