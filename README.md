@@ -5,6 +5,7 @@
 <a href="https://travis-ci.org/shitpostloudly/shitpostloudly.github.io"><img style="display:inline-block;" src="https://travis-ci.org/shitpostloudly/shitpostloudly.github.io.svg?branch=develop" alt="Build Status"></a>
 <a href="https://github.com/shitpostloudly/shitpostloudly.github.io/issues"><img style="display:inline-block;" src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="Contributions welcome"></a>
 <img style="display:inline-block;" src="http://hits.dwyl.io/shitpostloudly/shitpostloudly.github.io.svg" alt="Hit counter">
+<img style="display:inline-block;" src="https://badges.greenkeeper.io/shitpostloudly/shitpostloudly.github.io.svg" alt="Greenkeeper status">
 </div>
 
 Voice out the best copypastas by using the most advanced of speech synthesis APIs, right here in your browser!  
@@ -13,8 +14,6 @@ Voice out the best copypastas by using the most advanced of speech synthesis API
 https://shitpostloudly.github.io
 
 ## URLs
-
-[![Greenkeeper badge](https://badges.greenkeeper.io/shitpostloudly/shitpostloudly.github.io.svg)](https://greenkeeper.io/)
 
 https://shitpostloudly.github.io/ - gets a random Reddit /r/copypasta shitpost. Probably NSFW. Sorry.
 
