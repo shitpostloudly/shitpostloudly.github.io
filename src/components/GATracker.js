@@ -1,16 +1,20 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import GoogleAnalytics from 'react-ga';
+import { withRouter } from 'react-router';
 
-export default class GAListener extends React.Component {
-  static contextTypes = {
-    router: PropTypes.object
+class GAListener extends React.Component {
+  static propTypes = {
+    match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired
   };
 
   componentDidMount() {
+    const { history } = this.props;
     GoogleAnalytics.initialize('UA-125467783-1', { debug: false });
-    this.sendPageView(this.context.router.history.location);
-    this.context.router.history.listen(this.sendPageView);
+    this.sendPageView(history.location);
+    history.listen(this.sendPageView);
   }
 
   sendPageView(location) {
@@ -22,3 +26,5 @@ export default class GAListener extends React.Component {
     return this.props.children;
   }
 }
+
+export default withRouter(GAListener);
