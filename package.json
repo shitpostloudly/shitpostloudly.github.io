@@ -36,7 +36,7 @@
     "deploy": "gh-pages -d build -b master"
   },
   "devDependencies": {
-    "gh-pages": "^2.1.0"
+    "gh-pages": "^2.1.1"
   },
   "browserslist": [
     ">0.2%",
