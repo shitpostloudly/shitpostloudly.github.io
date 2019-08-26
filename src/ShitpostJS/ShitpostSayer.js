@@ -25,6 +25,8 @@ const speechUtteranceChunker = function (utt, settings, callback) {
   if (chunkArr && chunkArr[0] !== undefined && chunkArr[0].length > 2) {
       var chunk = chunkArr[0];
       var newUtt = new SpeechSynthesisUtterance(chunk.replace(/^\./,''));
+      // This is correct scoping. eslint is just going nuts. Don't worry.
+      // eslint-disable-next-line no-unused-vars
       for (let x in utt) {
         newUtt["lang"] = utt["lang"]
         if (utt.hasOwnProperty(x) && x !== 'text') {
