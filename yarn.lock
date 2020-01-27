@@ -4130,10 +4130,10 @@ fragment-cache@^0.2.1:
   dependencies:
     map-cache "^0.2.2"
 
-franc-min@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/franc-min/-/franc-min-4.1.0.tgz#d23e6945fbfe7a1ebcfe61791db904201ac1a793"
-  integrity sha512-Rlkc3QaVNNnvWjEhhcLs6PnwH4CqSAxxStUSSly6XNYWTSRRYqSLvQmIDBOBz6cP5uOKFwU1b7rk8rQDn85IrQ==
+franc-min@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/franc-min/-/franc-min-5.0.0.tgz#5625d0570a18564dcbbfa8330254d23549294d9a"
+  integrity sha512-xy7Iq7uNflbvNU+bkyYWtP+BOHWZle7kT9GM84gEV14b7/7sgq7M7Flf6v1XRflHAuHoshBMveWA6Q+kEXYeHQ==
   dependencies:
     trigram-utils "^1.0.0"
 
