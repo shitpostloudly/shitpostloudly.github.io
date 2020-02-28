@@ -16,7 +16,7 @@
     "langs": "^2.0.0",
     "mespeak": "^2.0.2",
     "react": "^16.13.0",
-    "react-dom": "^16.9.0",
+    "react-dom": "^16.13.0",
     "react-ga": "^2.6.0",
     "react-google-recaptcha": "^2.0.0-rc.1",
     "react-router": "^5.0.1",
