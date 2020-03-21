@@ -21,7 +21,7 @@
     "react-google-recaptcha": "^2.0.0-rc.1",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "^3.1.1",
+    "react-scripts": "^3.4.1",
     "react-youtube": "^7.9.0"
   },
   "eslintConfig": {
